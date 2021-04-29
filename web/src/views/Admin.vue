@@ -1,8 +1,8 @@
 <template>
   <div id="main">
     <Top title="电影院"/>
-     <Login/>
-      <TabBar/>
+    <Login/>
+    <TabBar/>
   </div>
 </template>
 

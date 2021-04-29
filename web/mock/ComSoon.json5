@@ -1,0 +1,17 @@
+{
+  "comingsoonlist|20-50":[
+    { 
+      'id|+1':10001,
+      'haspronmotionTag':'@boolean',//带有促销标签的
+      'img':"@image('128x180', '@color', '@color', 'png', '（IMG）')",//缩略图
+      'version|1':['3dimax','2d','高清大屏'], //版本
+      'rm':'@ctitle(3, 5)',// 电影名称
+      'preShow': '@boolean',
+      'sc|1-9.1-1': 1, //评分
+      'globalReleased':'@boolean', //是否全球发行
+      'Star|1-3':' @cname', //主演
+      'Wanttosee|500-2000':1,//多少人想看 关注次数
+      'time':'@date("yyyy-MM-dd")',//上映时间
+     },
+  ]
+}

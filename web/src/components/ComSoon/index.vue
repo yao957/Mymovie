@@ -1,97 +1,13 @@
 <template>
 	<div class="movie_body">
 				<ul>
-					<li>
-						<div class="pic_show"><img src="/images/movie_1.jpg"></div>
+					<li v-for="(items,index) in consoondata" :key="index">
+						<div class="pic_show"><img  :src="items.img"></div>
 						<div class="info_list">
-							<h2>无名之辈</h2>
-							<p><span class="person">17746</span> 人想看</p>
-							<p>主演: 陈建斌,任素汐,潘斌龙</p>
-							<p>2018-11-30上映</p>
-						</div>
-						<div class="btn_pre">
-							预售
-						</div>
-					</li>
-					<li>
-						<div class="pic_show"><img src="/images/movie_2.jpg"></div>
-						<div class="info_list">
-							<h2>毒液：致命守护者</h2>
-							<p><span class="person">2346</span> 人想看</p>
-							<p>主演: 汤姆·哈迪,米歇尔·威廉姆斯,里兹·阿迈德</p>
-							<p>2018-11-30上映</p>
-						</div>
-						<div class="btn_pre">
-							预售
-						</div>
-					</li>
-					<li>
-						<div class="pic_show"><img src="/images/movie_1.jpg"></div>
-						<div class="info_list">
-							<h2>无名之辈</h2>
-							<p><span class="person">17746</span> 人想看</p>
-							<p>主演: 陈建斌,任素汐,潘斌龙</p>
-							<p>2018-11-30上映</p>
-						</div>
-						<div class="btn_pre">
-							预售
-						</div>
-					</li>
-					<li>
-						<div class="pic_show"><img src="/images/movie_2.jpg"></div>
-						<div class="info_list">
-							<h2>毒液：致命守护者</h2>
-							<p><span class="person">2346</span> 人想看</p>
-							<p>主演: 汤姆·哈迪,米歇尔·威廉姆斯,里兹·阿迈德</p>
-							<p>2018-11-30上映</p>
-						</div>
-						<div class="btn_pre">
-							预售
-						</div>
-					</li>
-					<li>
-						<div class="pic_show"><img src="/images/movie_1.jpg"></div>
-						<div class="info_list">
-							<h2>无名之辈</h2>
-							<p><span class="person">17746</span> 人想看</p>
-							<p>主演: 陈建斌,任素汐,潘斌龙</p>
-							<p>2018-11-30上映</p>
-						</div>
-						<div class="btn_pre">
-							预售
-						</div>
-					</li>
-					<li>
-						<div class="pic_show"><img src="/images/movie_2.jpg"></div>
-						<div class="info_list">
-							<h2>毒液：致命守护者</h2>
-							<p><span class="person">2346</span> 人想看</p>
-							<p>主演: 汤姆·哈迪,米歇尔·威廉姆斯,里兹·阿迈德</p>
-							<p>2018-11-30上映</p>
-						</div>
-						<div class="btn_pre">
-							预售
-						</div>
-					</li>
-					<li>
-						<div class="pic_show"><img src="/images/movie_1.jpg"></div>
-						<div class="info_list">
-							<h2>无名之辈</h2>
-							<p><span class="person">17746</span> 人想看</p>
-							<p>主演: 陈建斌,任素汐,潘斌龙</p>
-							<p>2018-11-30上映</p>
-						</div>
-						<div class="btn_pre">
-							预售
-						</div>
-					</li>
-					<li>
-						<div class="pic_show"><img src="/images/movie_2.jpg"></div>
-						<div class="info_list">
-							<h2>毒液：致命守护者</h2>
-							<p><span class="person">2346</span> 人想看</p>
-							<p>主演: 汤姆·哈迪,米歇尔·威廉姆斯,里兹·阿迈德</p>
-							<p>2018-11-30上映</p>
+							<h2>{{items.rm}} <img v-if="items.version=='3dimax' " src="@/assets/maxs.png" alt=""></h2>
+							<p><span class="person">{{items.Wanttosee}}</span> 人想看</p>
+							<p>主演: {{items.Star}}</p>
+							<p>{{items.time}}上映</p>
 						</div>
 						<div class="btn_pre">
 							预售
@@ -106,9 +22,21 @@ export default {
   name: 'Comsoon',
   data() { 
     return {
-        
+			consoondata:[]
     }
-  }
+  },
+	methods:{
+			getconsoon(){
+					this.$http.get('/comsoon').then((res)=>{
+							this.consoondata = res.data.comingsoonlist
+					}).catch((err)=>{
+							console.log(`数据获取失败`+ err);
+					})
+			}
+	},
+	created(){
+		this.getconsoon()
+	}
  }
 </script>
 

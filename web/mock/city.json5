@@ -1,0 +1,10 @@
+{
+  "citylist|20-50":[
+    { 
+      'py|1':['alibb','beijing','chengdu','duzhou','huanghe','fujian','guangzhou','zhengjiang','tianjin'],
+      'id|+1':1001,
+      'isHot|1' : ['0','1'],
+      "name": "@city" 
+     },
+  ]
+}
